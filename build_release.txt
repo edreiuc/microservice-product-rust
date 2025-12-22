@@ -1,0 +1,69 @@
+   Compiling smallvec v1.15.1
+   Compiling serde_core v1.0.228
+   Compiling socket2 v0.5.10
+   Compiling winnow v0.5.40
+   Compiling toml_datetime v0.6.11
+   Compiling async-graphql-value v6.0.11
+   Compiling strum_macros v0.25.3
+   Compiling axum-core v0.3.4
+   Compiling pin-project-internal v1.1.10
+   Compiling multer v2.1.0
+   Compiling byteorder v1.5.0
+   Compiling try-lock v0.2.5
+   Compiling once_cell v1.21.3
+   Compiling axum v0.6.20
+   Compiling static_assertions v1.1.0
+   Compiling sync_wrapper v0.1.2
+   Compiling want v0.3.1
+   Compiling parking_lot_core v0.9.12
+   Compiling icu_normalizer v2.1.1
+   Compiling ipconfig v0.3.2
+   Compiling async-graphql-parser v6.0.11
+   Compiling pin-project v1.1.10
+   Compiling strum v0.25.0
+   Compiling toml_edit v0.19.15
+   Compiling parking_lot v0.12.5
+   Compiling idna_adapter v1.2.1
+   Compiling idna v1.1.0
+   Compiling serde v1.0.228
+   Compiling indexmap v2.12.1
+   Compiling serde_bytes v0.11.19
+   Compiling uuid v1.19.0
+   Compiling serde_path_to_error v0.1.20
+   Compiling bytes v1.11.0
+   Compiling url v2.5.7
+   Compiling serde_urlencoded v0.7.1
+   Compiling serde_with v1.14.0
+   Compiling proc-macro-crate v1.3.1
+   Compiling serde_json v1.0.146
+   Compiling async-graphql-derive v6.0.11
+   Compiling http v0.2.12
+   Compiling tokio v1.48.0
+   Compiling http-body v0.4.6
+   Compiling headers-core v0.2.0
+   Compiling tungstenite v0.20.1
+   Compiling bson v2.15.0
+   Compiling handlebars v4.5.0
+   Compiling headers v0.3.9
+   Compiling hyper v0.14.32
+   Compiling trust-dns-proto v0.21.2
+   Compiling tokio-util v0.7.17
+   Compiling tokio-tungstenite v0.20.1
+   Compiling tower v0.4.13
+   Compiling async-graphql v6.0.11
+   Compiling tokio-stream v0.1.17
+   Compiling tokio-rustls v0.24.1
+   Compiling trust-dns-resolver v0.21.2
+   Compiling mongodb v2.8.2
+   Compiling async-graphql-axum v6.0.11
+   Compiling products_service v0.1.0 (C:\Users\Lenovo\Documents\dev\products_microservice)
+warning: unused variable: `id`
+  --> src\domain\entity\product_entity.rs:16:16
+   |
+16 |     pub fn new(id: String, name: String, price: f64, stock: i32, category: String) -> Self {
+   |                ^^ help: if this is intentional, prefix it with an underscore: `_id`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: `products_service` (lib) generated 1 warning (run `cargo fix --lib -p products_service` to apply 1 suggestion)
+    Finished `release` profile [optimized] target(s) in 1m 38s
