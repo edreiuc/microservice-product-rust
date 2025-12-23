@@ -1,5 +1,5 @@
 use crate::domain::{
-    entity::x::Product,
+    entity::product_entity::Product,
     repository::product_repository::{ProductError, ProductRepository},
 };
 use async_trait::async_trait;

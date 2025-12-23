@@ -13,7 +13,7 @@ pub struct Product {
 }
 
 impl Product {
-    pub fn new(id: String, name: String, price: f64, stock: i32, category: String) -> Self {
+    pub fn new(_id: String, name: String, price: f64, stock: i32, category: String) -> Self {
         Self {
             id: None,
             name,
