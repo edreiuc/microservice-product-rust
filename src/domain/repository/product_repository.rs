@@ -11,4 +11,5 @@ pub trait ProductRepository: Send + Sync {
     async fn update(&self, id: ObjectId, product: Product) -> Result<Product, ProductError>;
     async fn delete(&self, id: ObjectId) -> Result<(), ProductError>;
     async fn find_all(&self) -> Result<Vec<Product>, ProductError>;
+    async fn get_by_id(&self, id: ObjectId) -> Result<Product, ProductError>;
 }

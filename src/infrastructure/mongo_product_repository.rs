@@ -58,6 +58,20 @@ impl ProductRepository for MongoProductRepository {
         Ok(updated_product)
     }
 
+    async fn get_by_id(&self, id: ObjectId) -> Result<Product, ProductError> {
+        let result = self
+            .manager.get_by_id(id)
+            .await?;
+
+        let document = result.ok_or_else(|| {
+            Box::<dyn std::error::Error + Send + Sync>::from("No se encontró el producto")
+        })?;
+
+        let product: Product = bson::from_document(document)?;
+
+        Ok(product)
+    }
+
     async fn delete(&self, id: ObjectId) -> Result<(), ProductError> {
         let collection = self.manager.get_all();
         let filter = bson::doc! { "_id": id };
