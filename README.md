@@ -71,7 +71,7 @@ Content-Type: application/json
 **GraphQL:**
 
 ```graphql
-{
+query HealthCheck {
   healthCheck
 }
 ```
@@ -101,7 +101,7 @@ Content-Type: application/json
 **GraphQL:**
 
 ```graphql
-{
+query Products {
   products {
     id
     name
@@ -140,7 +140,51 @@ Content-Type: application/json
 
 ---
 
-### 3. Crear un Producto
+### 3. Obtener Producto por ID
+
+**GraphQL:**
+
+```graphql
+query GetProductById($id: ObjectId!) {
+  productById(id: $id) {
+    id
+    name
+    price
+    stock
+    category
+  }
+}
+```
+
+**Postman (JSON):**
+
+```json
+{
+  "query": "{ productById(id: \"507f1f77bcf86cd799439011\") { id name price stock category } }"
+}
+```
+
+**Respuesta:**
+
+```json
+{
+  "data": {
+    "productById": {
+      "id": "507f1f77bcf86cd799439011",
+      "name": "Laptop Dell",
+      "price": 15999.99,
+      "stock": 25,
+      "category": "Electrónica"
+    }
+  }
+}
+```
+
+> **Nota:** El `id` debe ser un ObjectId válido de MongoDB (24 caracteres hexadecimales).
+
+---
+
+### 4. Crear un Producto
 
 **GraphQL:**
 
@@ -187,7 +231,7 @@ mutation {
 
 ---
 
-### 4. Crear Producto con Variables
+### 5. Crear Producto con Variables
 
 **GraphQL Query:**
 
