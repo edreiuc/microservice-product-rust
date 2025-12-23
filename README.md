@@ -323,7 +323,7 @@ Este proyecto está bajo la licencia MIT.
 
 ## 👨‍💻 Autor
 
-Tu nombre aquí
+Samuel Edrei Uc Angulo
 
 ## 🤝 Contribuciones
 
