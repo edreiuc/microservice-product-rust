@@ -9,6 +9,7 @@ use axum::{
 use products_service::application::{
     create_product::CreateProductUseCase, delete_product::DeleteProductUseCase,
     get_product::GetProductUseCase, get_product_by_id::GetProductByIdUseCase,
+    update_product::UpdateProductUseCase,
 };
 use products_service::domain::repository::product_repository::ProductRepository;
 use products_service::infrastructure::{
@@ -42,6 +43,7 @@ async fn main() {
     let get_products_use_case = Arc::new(GetProductUseCase::new(product_repository.clone()));
     let get_product_by_id_use_case =
         Arc::new(GetProductByIdUseCase::new(product_repository.clone()));
+    let update_product_use_case = Arc::new(UpdateProductUseCase::new(product_repository.clone()));
     let delete_product_use_case = Arc::new(DeleteProductUseCase::new(product_repository.clone()));
 
     let schema = Schema::build(QueryRoot, MutationRoot, EmptySubscription)
@@ -49,6 +51,7 @@ async fn main() {
         .data(get_products_use_case)
         .data(get_product_by_id_use_case)
         .data(delete_product_use_case)
+        .data(update_product_use_case)
         .finish();
 
     let app = Router::new()

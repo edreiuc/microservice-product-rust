@@ -233,6 +233,46 @@ mutation DeleteProduct($id: ObjectId!) {
 }
 ```
 
+### 6. Actualizar un Producto
+
+**GraphQL Mutation:**
+
+```graphql
+mutation UpdateProduct(
+  $id: ObjectId!
+  $name: String!
+  $price: Float!
+  $stock: Int!
+  $category: String!
+) {
+  updateProduct(
+    id: $id
+    name: $name
+    price: $price
+    stock: $stock
+    category: $category
+  ) {
+    id
+    name
+    price
+    stock
+    category
+  }
+}
+```
+
+**Variables:**
+
+```json
+{
+  "id": "694a22370f273b52c8a8cf47",
+  "name": "Mouse Logitech",
+  "price": 299.99,
+  "stock": 100,
+  "category": "Accesorios"
+}
+```
+
 ## 🏗️ Arquitectura del Proyecto
 
 ```
