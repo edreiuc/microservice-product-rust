@@ -343,38 +343,3 @@ cargo test
 # Ejecutar tests con output
 cargo test -- --nocapture
 ```
-
-## 🐛 Troubleshooting
-
-### Error: "Cannot parse the unexpected character '<'"
-
-- **Causa**: Usando GET en lugar de POST
-- **Solución**: Asegúrate de usar método POST en Postman
-
-### Error: "expected executable_definition"
-
-- **Causa**: Content-Type incorrecto o body mal formateado
-- **Solución**: Verifica que el header sea `Content-Type: application/json`
-
-### Error de conexión a MongoDB
-
-- **Causa**: MongoDB no está corriendo o URI incorrecta
-- **Solución**: Verifica que MongoDB esté activo y la variable `MONGO_URI` en `.env`
-
-## 📄 Licencia
-
-Este proyecto está bajo la licencia MIT.
-
-## 👨‍💻 Autor
-
-Samuel Edrei Uc Angulo
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor:
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
