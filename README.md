@@ -76,14 +76,6 @@ query HealthCheck {
 }
 ```
 
-**Postman (JSON):**
-
-```json
-{
-  "query": "{ healthCheck }"
-}
-```
-
 **Respuesta:**
 
 ```json
@@ -109,14 +101,6 @@ query Products {
     stock
     category
   }
-}
-```
-
-**Postman (JSON):**
-
-```json
-{
-  "query": "{ products { id name price stock category } }"
 }
 ```
 
@@ -160,7 +144,7 @@ query GetProductById($id: ObjectId!) {
 
 ```json
 {
-  "query": "{ productById(id: \"507f1f77bcf86cd799439011\") { id name price stock category } }"
+  "id": "694a22370f273b52c8a8cf47"
 }
 ```
 
@@ -186,54 +170,7 @@ query GetProductById($id: ObjectId!) {
 
 ### 4. Crear un Producto
 
-**GraphQL:**
-
-```graphql
-mutation {
-  createProduct(
-    name: "Laptop Dell"
-    price: 15999.99
-    stock: 25
-    category: "Electrónica"
-  ) {
-    id
-    name
-    price
-    stock
-    category
-  }
-}
-```
-
-**Postman (JSON):**
-
-```json
-{
-  "query": "mutation { createProduct(name: \"Laptop Dell\", price: 15999.99, stock: 25, category: \"Electrónica\") { id name price stock category } }"
-}
-```
-
-**Respuesta:**
-
-```json
-{
-  "data": {
-    "createProduct": {
-      "id": "507f1f77bcf86cd799439011",
-      "name": "Laptop Dell",
-      "price": 15999.99,
-      "stock": 25,
-      "category": "Electrónica"
-    }
-  }
-}
-```
-
----
-
-### 5. Crear Producto con Variables
-
-**GraphQL Query:**
+**GraphQL Mutation:**
 
 ```graphql
 mutation CreateProduct(
@@ -268,16 +205,30 @@ mutation CreateProduct(
 }
 ```
 
-**Postman (JSON):**
+### 5. Eliminar un Producto
+
+**GraphQL Mutation:**
+
+```graphql
+mutation DeleteProduct($id: ObjectId!) {
+  deleteProduct(id: $id)
+}
+```
+
+**Variables:**
 
 ```json
 {
-  "query": "mutation CreateProduct($name: String!, $price: Float!, $stock: Int!, $category: String!) { createProduct(name: $name, price: $price, stock: $stock, category: $category) { id name price stock category } }",
-  "variables": {
-    "name": "Mouse Logitech",
-    "price": 299.99,
-    "stock": 100,
-    "category": "Accesorios"
+  "id": "694a22370f273b52c8a8cf47"
+}
+```
+
+**Respuesta:**
+
+```json
+{
+  "data": {
+    "deleteProduct": "Producto eliminado correctamente"
   }
 }
 ```

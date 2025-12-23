@@ -1,6 +1,6 @@
+use async_graphql::SimpleObject;
 use mongodb::bson::oid::ObjectId;
 use serde::{Deserialize, Serialize};
-use async_graphql::SimpleObject;
 
 #[derive(Serialize, Deserialize, Debug, Clone, SimpleObject)]
 pub struct Product {
@@ -39,5 +39,4 @@ impl Product {
         self.stock = stock;
         self.category = category;
     }
-    
 }

@@ -1,5 +1,5 @@
-use mongodb::{Client, Database, options::ClientOptions};
 use bson::oid::ObjectId;
+use mongodb::{Client, Database, options::ClientOptions};
 use std::env;
 
 pub struct MongoConnectionManager {
@@ -27,7 +27,21 @@ impl MongoConnectionManager {
         self.db.collection("products")
     }
 
-    pub async fn get_by_id(&self, id: ObjectId) -> Result<Option<bson::Document>, mongodb::error::Error> {
-        self.db.collection("products").find_one(bson::doc! { "_id": id }, None).await
+    pub async fn get_by_id(
+        &self,
+        id: ObjectId,
+    ) -> Result<Option<bson::Document>, mongodb::error::Error> {
+        self.db
+            .collection("products")
+            .find_one(bson::doc! { "_id": id }, None)
+            .await
+    }
+
+    pub async fn delete(&self, id: ObjectId) -> Result<(), mongodb::error::Error> {
+        self.db
+            .collection::<bson::Document>("products")
+            .delete_one(bson::doc! { "_id": id }, None)
+            .await?;
+        Ok(())
     }
 }

@@ -1,8 +1,11 @@
-use async_graphql::{Context, Object};
-use crate::application::{get_product::GetProductUseCase, get_product_by_id::GetProductByIdUseCase, create_product::CreateProductUseCase};
+use crate::application::{
+    create_product::CreateProductUseCase, delete_product::DeleteProductUseCase,
+    get_product::GetProductUseCase, get_product_by_id::GetProductByIdUseCase,
+};
 use crate::domain::entity::product_entity::Product;
-use std::sync::Arc;
+use async_graphql::{Context, Object};
 use bson::oid::ObjectId;
+use std::sync::Arc;
 
 pub struct QueryRoot;
 
@@ -14,27 +17,30 @@ impl QueryRoot {
 
     async fn products(&self, ctx: &Context<'_>) -> async_graphql::Result<Vec<Product>> {
         let use_case = ctx.data::<Arc<GetProductUseCase>>()?;
-        
+
         let products = use_case.execute().await;
-        
+
         match products {
             Ok(data) => Ok(data),
             Err(e) => Err(async_graphql::Error::new(e)),
         }
     }
 
-    async fn product_by_id(&self, ctx: &Context<'_>, id: ObjectId) -> async_graphql::Result<Product> {
+    async fn product_by_id(
+        &self,
+        ctx: &Context<'_>,
+        id: ObjectId,
+    ) -> async_graphql::Result<Product> {
         let use_case = ctx.data::<Arc<GetProductByIdUseCase>>()?;
-        
+
         let product = use_case.execute(id).await;
-        
+
         match product {
             Ok(data) => Ok(data),
             Err(e) => Err(async_graphql::Error::new(e)),
         }
     }
 }
-
 
 pub struct MutationRoot;
 
@@ -48,15 +54,25 @@ impl MutationRoot {
         stock: i32,
         category: String,
     ) -> async_graphql::Result<Product> {
-        
-        
         let use_case = ctx.data::<Arc<CreateProductUseCase>>()?;
-        
+
         let product = use_case.execute(name, price, stock, category).await;
-        
+
         match product {
             Ok(data) => Ok(data),
             Err(e) => Err(async_graphql::Error::new(e)),
         }
+    }
+
+    async fn delete_product(
+        &self,
+        ctx: &Context<'_>,
+        id: ObjectId,
+    ) -> async_graphql::Result<String> {
+        let use_case = ctx.data::<Arc<DeleteProductUseCase>>()?;
+
+        let _ = use_case.execute(id).await;
+
+        Ok("Producto eliminado correctamente".to_string())
     }
 }

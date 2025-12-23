@@ -1,3 +1,4 @@
 pub mod create_product;
+pub mod delete_product;
 pub mod get_product;
 pub mod get_product_by_id;
